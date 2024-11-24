@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite Hackers 🇦🇴 - Jogo de Invasão de Câmera</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        .camera-container {
+            text-align: center;
+            margin-top: 50px;
+            background-color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .camera-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .video-frame {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: none; /* Inicialmente oculto */
+        }
+
+        .button {
+            padding: 15px 25px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #218838;
+        }
+
+        .alert {
+            color: yellow;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="camera-container">
+        <h2>Bem-vindo ao simulador de invasão de câmeras</h2>
+        <p>Você está prestes a invadir o sistema de câmeras de segurança e monitorar imagens ao vivo...</p>
+
+        <!-- Exibe a mensagem antes da invasão -->
+        <div class="alert" id="alertMessage">
+            Aperte o botão abaixo para começar a invasão...
+        </div>
+
+        <!-- Botão para começar -->
+        <button class="button" id="startButton" onclick="startHack()">Iniciar Invasão</button>
+
+        <!-- Inserir o vídeo de câmera falsa que será exibido após a invasão -->
+        <iframe class="video-frame" id="cameraVideo" src="https://www.youtube.com/embed/e2gC37ILQmk?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        // Função para iniciar a "invasão"
+        function startHack() {
+            // Mudar a mensagem para indicar que o hackeamento começou
+            document.getElementById("alertMessage").innerHTML = "Hackeando o sistema... Por favor, aguarde...";
+            
+            // Esconder o botão e mostrar o vídeo
+            document.getElementById("startButton").style.display = "none";
+            
+            // Esperar 3 segundos e mostrar o vídeo
+            setTimeout(function() {
+                // Exibir o vídeo
+                document.getElementById("cameraVideo").style.display = "block";
+
+                // Atualizar a mensagem para informar que o hackeamento foi bem-sucedido
+                document.getElementById("alertMessage").innerHTML = "Acesso concedido! Você está agora vendo a câmera de segurança.";
+            }, 3000);  // Tempo de espera para "hackear" (3 segundos)
+        }
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio Mágico - Angola</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .clock-container {
+            text-align: center;
+            border: 2px solid #00FF00;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            background-color: #000;
+            position: relative;
+            z-index: 1;
+        }
+
+        .clock {
+            font-size: 60px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin: 20px;
+            animation: blink 1.5s infinite;
+        }
+
+        .subtext {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #FF4500;
+            animation: blinkSubtext 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { color: #00FF00; }
+            50% { color: #FF00FF; }
+            100% { color: #00FF00; }
+        }
+
+        @keyframes blinkSubtext {
+            0% { color: #FF4500; }
+            50% { color: #FFD700; }
+            100% { color: #FF4500; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #00FF00;
+            margin-left: 10px;
+            animation: blinkCursor 1s infinite;
+        }
+
+        @keyframes blinkCursor {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <div class="clock" id="clock">
+            --:--:--
+            <span class="cursor"></span>
+        </div>
+        <div class="subtext">Relógio de Angola - Fuso Horário: UTC+1</div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const angolaTime = new Date().toLocaleString("en-US", { timeZone: "Africa/Luanda" });
+
+            // Formatar o horário
+            const formattedTime = new Date(angolaTime).toLocaleTimeString();
+
+            // Atualizar o relógio na tela
+            document.getElementById('clock').innerHTML = formattedTime + '<span class="cursor"></span>';
+        }
+
+        setInterval(updateClock, 1000);  // Atualiza a cada segundo
+    </script>
+
+</body>
+</html>

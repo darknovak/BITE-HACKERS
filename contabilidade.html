@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Contabilidade</title>
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#storyDisplay {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+input[type="number"] {
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #00ff00;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+#feedback {
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+span {
+    font-size: 20px;
+}
+
+#feedback span {
+    font-weight: normal;
+}
+
+#submitButton {
+    padding: 15px 30px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+#submitButton:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+#submitButton:hover {
+    background-color: #45a049;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    input[type="number"] {
+        width: 90%;
+    }
+
+    button {
+        width: 90%;
+    }
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        input, button {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        #storyDisplay {
+            margin-bottom: 20px;
+        }
+
+        .button-next {
+            background-color: green;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button-next:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+
+        #feedback {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="storyDisplay">
+        <span>História:</span> Bem-vindo ao simulador de contabilidade. Vamos resolver alguns cálculos!
+    </div>
+
+    <label for="answerInput">Qual é o valor?</label>
+    <input type="number" id="answerInput" placeholder="Digite sua resposta">
+    
+    <button id="submitButton" class="button-next" onclick="checkAnswer()">Submeter Resposta</button>
+
+    <div id="feedback"></div>
+
+    <script>
+        const questions = [
+            { question: "Calcule o passivo total da empresa: Empréstimos: 8.000 Kz, Fornecedores: 4.000 Kz", answer: 12000 },
+            { question: "Calcule o ativo total da empresa: Caixa: 5.000 Kz, Contas a Receber: 7.000 Kz", answer: 12000 },
+            { question: "Calcule o lucro líquido da empresa: Receita: 15.000 Kz, Custos: 10.000 Kz", answer: 5000 },
+            { question: "Calcule o saldo devedor: Dívida: 6.000 Kz, Pagamento: 2.000 Kz", answer: 4000 },
+            { question: "Calcule o patrimônio líquido da empresa: Ativos: 20.000 Kz, Passivos: 12.000 Kz", answer: 8000 },
+            { question: "Calcule o valor do ativo circulante: Caixa: 4.000 Kz, Estoques: 3.000 Kz", answer: 7000 },
+            { question: "Calcule o valor do passivo circulante: Empréstimos de curto prazo: 6.000 Kz, Fornecedores: 2.000 Kz", answer: 8000 },
+            { question: "Calcule o valor da receita líquida: Receita Bruta: 20.000 Kz, Descontos: 3.000 Kz", answer: 17000 },
+            { question: "Calcule o lucro operacional: Receita: 30.000 Kz, Custos Operacionais: 18.000 Kz", answer: 12000 },
+            { question: "Calcule o capital social: Total de investimento: 50.000 Kz, Capital próprio: 30.000 Kz", answer: 30000 },
+            { question: "Calcule o imposto devido: Receita: 10.000 Kz, Imposto de 15%", answer: 1500 },
+            { question: "Calcule o saldo de contas a pagar: Fornecedores: 5.000 Kz, Pagamentos realizados: 2.000 Kz", answer: 3000 },
+            { question: "Calcule o índice de liquidez corrente: Ativo Circulante: 15.000 Kz, Passivo Circulante: 10.000 Kz", answer: 1.5 },
+            { question: "Calcule o valor do dividendo: Lucro líquido: 8.000 Kz, Taxa de dividendos: 30%", answer: 2400 },
+            { question: "Calcule a rentabilidade: Lucro líquido: 10.000 Kz, Investimento total: 50.000 Kz", answer: 0.2 },
+            { question: "Calcule o valor das despesas administrativas: Despesas operacionais: 5.000 Kz, Despesas de vendas: 2.000 Kz", answer: 3000 },
+            { question: "Calcule o fluxo de caixa: Entradas: 12.000 Kz, Saídas: 8.000 Kz", answer: 4000 },
+            { question: "Calcule o custo de mercadorias vendidas: Compras: 7.000 Kz, Estoque inicial: 3.000 Kz, Estoque final: 2.000 Kz", answer: 8000 },
+            { question: "Calcule o valor do saldo devedor de longo prazo: Empréstimos: 15.000 Kz, Pagamentos: 5.000 Kz", answer: 10000 },
+            { question: "Calcule o índice de endividamento: Passivos totais: 20.000 Kz, Ativos totais: 30.000 Kz", answer: 0.67 }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            const questionData = questions[currentQuestionIndex];
+            document.getElementById('storyDisplay').innerHTML = `<span>História:</span> ${questionData.question}`;
+            document.getElementById('answerInput').value = '';
+            document.getElementById('feedback').innerHTML = '';
+            document.getElementById('submitButton').disabled = false;
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseFloat(document.getElementById('answerInput').value);
+            const correctAnswer = questions[currentQuestionIndex].answer;
+            const feedbackDiv = document.getElementById('feedback');
+            const submitButton = document.getElementById('submitButton');
+
+            if (userAnswer === correctAnswer) {
+                feedbackDiv.innerHTML = "<span style='color: green;'>Resposta correta! Continue para a próxima fase.</span>";
+                submitButton.disabled = true;
+                currentQuestionIndex++;
+
+                if (currentQuestionIndex < questions.length) {
+                    setTimeout(loadQuestion, 2000); // Proxima fase após 2 segundos
+                } else {
+                    setTimeout(finishGame, 2000); // Fim do jogo
+                }
+            } else {
+                feedbackDiv.innerHTML = "<span style='color: red;'>Resposta incorreta. Tente novamente.</span>";
+            }
+        }
+
+        function finishGame() {
+            document.getElementById('storyDisplay').innerHTML = "<span>Fim do Jogo:</span> Parabéns! Você completou todas as fases do simulador de contabilidade.";
+            document.getElementById('feedback').innerHTML = '';
+            document.getElementById('submitButton').disabled = true;
+        }
+
+        // Inicializa o jogo com a primeira pergunta
+        loadQuestion();
+    </script>
+
+</body>
+</html>

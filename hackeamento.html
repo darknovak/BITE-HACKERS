@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+   
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Hackeamento & Cursos</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+        }
+
+        .simulator {
+            background-color: #111;
+            border: 2px solid #00FF00;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .button {
+            background-color: #00FF00;
+            color: #111;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background-color: #FF00FF;
+        }
+
+        .button:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+
+        .status {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #FF6347;
+        }
+
+        .success {
+            color: #32CD32;
+        }
+
+        .failure {
+            color: #FF0000;
+        }
+
+        .info {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #FFD700;
+        }
+
+        .statistics {
+            font-size: 18px;
+            margin-top: 30px;
+            color: #FF6347;
+        }
+
+        .course {
+            background-color: #222;
+            color: #00BFFF;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .course:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <div class="header">
+        <h1>Simulador de Hackeamento & Cursos</h1>
+        <p>Escolha seu curso e comece sua jornada no mundo do hackeamento!</p>
+    </div>
+
+    <!-- Interface do Jogo -->
+    <div class="simulator">
+        <h2>Fase: Hackeamento em Curso</h2>
+
+        <p id="phaseDisplay">Sua missão começa com o hackeamento de um sistema bancário. Prepare-se!</p>
+
+        <!-- Botões principais -->
+        <button class="button" id="startHack" onclick="startHack()">Iniciar Hackeamento</button>
+        <button class="button" id="sendVirus" onclick="sendVirus()" disabled>Enviar Vírus</button>
+        <button class="button" id="exploreCourses" onclick="exploreCourses()">Explorar Cursos</button>
+
+        <!-- Status da missão -->
+        <div class="status" id="statusMessage"></div>
+
+        <!-- Informações de estatísticas -->
+        <div class="statistics" id="statisticsDisplay">Estatísticas: Hackeamentos concluídos: 0 | Vírus enviados: 0</div>
+    </div>
+
+    <!-- Cursos para explorar -->
+    <div class="course" id="courseDisplay" style="display:none;">
+        <h3>Escolha um curso para explorar:</h3>
+        <button class="button" onclick="selectCourse('Contabilidade')">Contabilidade</button>
+        <button class="button" onclick="selectCourse('Informática/IP')">Informática/Software/IP</button>
+        <button class="button" onclick="selectCourse('Engenharia Civil')">Engenharia Civil</button>
+    </div>
+
+    <script>
+        let hackCount = 0;
+        let virusCount = 0;
+
+        function startHack() {
+            let success = Math.random() > 0.3; // Chance de sucesso de 70%
+            if (success) {
+                document.getElementById('statusMessage').innerHTML = "<span class='success'>Hackeamento bem-sucedido! Isaac e Justino encontram uma pista!</span>";
+                hackCount++;
+                document.getElementById('phaseDisplay').innerHTML = "Você encontrou a pista de Isaac e Justino. Continue a missão para descobrir mais.";
+            } else {
+                document.getElementById('statusMessage').innerHTML = "<span class='failure'>Hackeamento falhou. Tente novamente!</span>";
+            }
+            document.getElementById('statisticsDisplay').innerHTML = `Estatísticas: Hackeamentos concluídos: ${hackCount} | Vírus enviados: ${virusCount}`;
+            document.getElementById('sendVirus').disabled = false;
+        }
+
+        function sendVirus() {
+            let success = Math.random() > 0.2; // Chance de sucesso de 80% no envio de vírus
+            if (success) {
+                document.getElementById('statusMessage').innerHTML = "<span class='success'>Vírus malicioso enviado! Nairoby e Kailany agora estão em perigo.</span>";
+                virusCount++;
+                document.getElementById('phaseDisplay').innerHTML = "O vírus afetou Nairoby e Kailany. O sistema está em risco!";
+            } else {
+                document.getElementById('statusMessage').innerHTML = "<span class='failure'>Falha no envio do vírus. Tente novamente!</span>";
+            }
+            document.getElementById('statisticsDisplay').innerHTML = `Estatísticas: Hackeamentos concluídos: ${hackCount} | Vírus enviados: ${virusCount}`;
+        }
+
+        function exploreCourses() {
+            document.getElementById('courseDisplay').style.display = 'block';
+        }
+
+        function selectCourse(courseName) {
+            let courseUrl = '';
+            if (courseName === 'Contabilidade') {
+                courseUrl = 'contabilidade.html';  // URL para a página do curso de Contabilidade
+            } else if (courseName === 'Informática/IP') {
+                courseUrl = 'informatica.html';  // URL para a página do curso de Informática/IP
+            } else if (courseName === 'Engenharia Civil') {
+                courseUrl = 'engenharia.html';  // URL para a página do curso de Engenharia Civil
+            }
+            window.location.href = courseUrl;  // Redirecionar para a página do curso
+        }
+    </script>
+
+</body>
+</html>

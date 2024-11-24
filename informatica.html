@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Perguntas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quiz-container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            background-color: #444;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .options li:hover {
+            background-color: #555;
+        }
+        .result {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div id="quiz">
+        <div class="question" id="question"></div>
+        <ul class="options" id="options"></ul>
+        <button onclick="nextQuestion()">Próxima Pergunta</button>
+        <div class="result" id="result"></div>
+    </div>
+</div>
+
+<script>
+    let currentQuestionIndex = 0;
+
+    const questions = [
+        {
+        question: "O que significa a sigla 'URL'?",
+        options: ["Uniform Resource Locator", "Universal Resource Locator", "Uniform Return Locator", "Universal Return Locator"],
+        correctAnswer: "Uniform Resource Locator"
+    },
+    {
+        question: "Qual é a principal função do CSS?",
+        options: ["Definir a estrutura do conteúdo", "Estilizar páginas web", "Processar dados do servidor", "Criar interatividade nas páginas"],
+        correctAnswer: "Estilizar páginas web"
+    },
+    {
+        question: "O que significa a sigla 'HTTP'?",
+        options: ["HyperText Transfer Protocol", "HyperText Transfer Processor", "High Transfer Text Protocol", "High Transfer Text Processor"],
+        correctAnswer: "HyperText Transfer Protocol"
+    },
+    {
+        question: "Qual é o sistema operacional de código aberto mais utilizado no mundo?",
+        options: ["Windows", "Linux", "MacOS", "Android"],
+        correctAnswer: "Linux"
+    },
+    {
+        question: "Qual a função de um Firewall?",
+        options: ["Proteger o sistema contra vírus", "Controlar o tráfego de rede", "Armazenar dados de usuários", "Prover backup de arquivos"],
+        correctAnswer: "Controlar o tráfego de rede"
+    },
+    {
+        question: "O que significa a sigla 'RAM'?",
+        options: ["Random Access Memory", "Read Access Memory", "Rapid Access Memory", "Range Access Memory"],
+        correctAnswer: "Random Access Memory"
+    },
+    {
+        question: "Qual é o modelo de referência utilizado para a comunicação em redes de computadores?",
+        options: ["Modelo OSI", "Modelo TCP/IP", "Modelo HTTP", "Modelo LAN"],
+        correctAnswer: "Modelo OSI"
+    },
+    {
+        question: "Quem criou a World Wide Web?",
+        options: ["Steve Jobs", "Bill Gates", "Tim Berners-Lee", "Mark Zuckerberg"],
+        correctAnswer: "Tim Berners-Lee"
+    },
+    {
+        question: "O que significa a sigla 'DNS'?",
+        options: ["Domain Name System", "Domain Network System", "Dynamic Network Service", "Distributed Name Service"],
+        correctAnswer: "Domain Name System"
+    },
+    {
+        question: "Qual é a diferença entre HTTP e HTTPS?",
+        options: ["HTTPS é seguro, HTTP não é", "HTTP é mais rápido que o HTTPS", "HTTPS é usado apenas em sites de comércio", "Não há diferença entre eles"],
+        correctAnswer: "HTTPS é seguro, HTTP não é"
+    },
+    {
+        question: "Qual é o termo para falhas de segurança em softwares e sistemas?",
+        options: ["Malwares", "Bugs", "Vulnerabilidades", "Phishing"],
+        correctAnswer: "Vulnerabilidades"
+    },
+    {
+        question: "O que significa a sigla 'API'?",
+        options: ["Application Programming Interface", "Application Processing Interface", "Automated Programming Interface", "Advanced Processing Interface"],
+        correctAnswer: "Application Programming Interface"
+    },
+     {
+    question: "O que é um algoritmo?",
+    options: ["Uma linguagem de programação", "Um conjunto de instruções para resolver um problema", "Uma ferramenta de design gráfico", "Um sistema operacional"],
+    correctAnswer: "Um conjunto de instruções para resolver um problema"
+         },
+          {
+            question: "Qual é a linguagem de programação usada para desenvolver páginas web?",
+            options: ["Python", "JavaScript", "C++", "Java"],
+            correctAnswer: "JavaScript"
+        },
+        {
+            question: "O que é um IP?",
+            options: ["Internet Protocol", "Interface Protocol", "Interconnected Point", "Integrated Protocol"],
+            correctAnswer: "Internet Protocol"
+        },
+        {
+            question: "O que é um servidor?",
+            options: ["Um computador pessoal", "Um software antivírus", "Um dispositivo de rede que fornece recursos", "Uma rede de dados"],
+            correctAnswer: "Um dispositivo de rede que fornece recursos"
+        },
+        {
+            question: "Qual desses protocolos é usado para enviar e-mails?",
+            options: ["FTP", "SMTP", "HTTP", "SSH"],
+            correctAnswer: "SMTP"
+        },
+        {
+            question: "Qual é a principal função do HTML?",
+            options: ["Estilizar páginas", "Criar e formatar páginas web", "Programar a lógica do site", "Armazenar dados no servidor"],
+            correctAnswer: "Criar e formatar páginas web"
+        }
+    ];
+
+    function loadQuestion() {
+        const questionData = questions[currentQuestionIndex];
+        document.getElementById('question').textContent = questionData.question;
+
+        const optionsList = document.getElementById('options');
+        optionsList.innerHTML = '';
+        questionData.options.forEach(option => {
+            const li = document.createElement('li');
+            li.textContent = option;
+            li.onclick = () => checkAnswer(option);
+            optionsList.appendChild(li);
+        });
+    }
+
+    function checkAnswer(selectedOption) {
+        const questionData = questions[currentQuestionIndex];
+        const resultElement = document.getElementById('result');
+
+        if (selectedOption === questionData.correctAnswer) {
+            resultElement.textContent = 'Resposta Correta!';
+            resultElement.className = 'result correct';
+        } else {
+            resultElement.textContent = 'Resposta Incorreta!';
+            resultElement.className = 'result incorrect';
+        }
+        resultElement.style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            loadQuestion();
+            document.getElementById('result').style.display = 'none';
+        } else {
+            document.getElementById('quiz').innerHTML = "<h2>Você completou o quiz!</h2>";
+        }
+    }
+
+    loadQuestion();
+</script>
+
+</body>
+</html>

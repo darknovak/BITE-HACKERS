@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite Hackers: World Virus Simulator 🇦🇴</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Bite Hackers: World Virus Simulator 🇦🇴</h1>
+        <div id="terminal">
+            <div id="console">
+                <p>Bem-vindo ao terminal do mundo digital... Digite um código para acessar as histórias do vírus.</p>
+                <p>Digite <strong>skibidi-virus</strong> para desbloquear a história do Skibidi Virus...</p>
+            </div>
+            <input type="text" id="command" placeholder="Digite um código..." />
+            <button onclick="runCommand()">Executar</button>
+        </div>
+
+        <div id="game-info">
+            <h3>História: O Surgimento do Vírus "Skibidi"</h3>
+            <p><strong>Código: skibidi-virus</strong></p>
+            <p id="skibidi-text" style="display: none;">
+                Um dia, no mundo digital, um vírus misterioso começou a se espalhar rapidamente. Ninguém sabia de onde ele vinha ou como ele foi criado. Seu nome, "Skibidi", era algo estranho e diferente de tudo o que os outros vírus tinham.
+            </p>
+            <p id="redirect-text" style="display: none;">
+                <strong>História desbloqueada! A história do "Skibidi" está completa. Para continuar, digite o código <strong>codigos-esquecidos</strong> para ir para a próxima história.</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function runCommand() {
+            var command = document.getElementById("command").value;
+            var consoleText = document.getElementById("console");
+            var skibidiText = document.getElementById("skibidi-text");
+            var redirectText = document.getElementById("redirect-text");
+
+            // Limpar o terminal a cada comando
+            consoleText.innerHTML = "<p>Comando sendo processado...</p>";
+
+            if (command === "skibidi-virus") {
+                setTimeout(function() {
+                    consoleText.innerHTML += "<p><strong>História desbloqueada:</strong> O Surgimento do Vírus 'Skibidi'.</p>";
+                    skibidiText.style.display = "block";  // Mostrar o conteúdo da história
+                    redirectText.style.display = "block";  // Mostrar o código para a próxima história
+                }, 2000); // Espera 2 segundos para mostrar a história
+            } else if (command === "codigos-esquecidos") {
+                setTimeout(function() {
+                    window.location.href = "historia2.html"; // Redireciona para a página da próxima história após 10 segundos
+                }, 10000); // Processa por 10 segundos antes de redirecionar
+            } else {
+                consoleText.innerHTML += "<p>Comando não reconhecido.</p>";
+            }
+
+            // Limpar o campo de comando
+            document.getElementById("command").value = "";
+        }
+    </script>
+</body>
+</html>

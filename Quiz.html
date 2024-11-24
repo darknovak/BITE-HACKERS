@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Os Guardiões do Código: A Ascensão do Terramoto Digital</title>
+    <style>
+  body {
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+.floating-link-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.floating-link {
+    font-size: 2rem;
+    color: #00ff00;
+    text-decoration: none;
+    animation: floating 2s ease-in-out infinite;
+    transition: color 0.3s ease;
+}
+
+.floating-link:hover {
+    color: #ff00ff;  /* Cor ao passar o mouse */
+}
+
+/* Animação de flutuação */
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    color: #00ff00;
+    font-size: 2rem;
+    margin-top: 20px;
+    animation: flicker 1s infinite alternate;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.hacker-effects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/triangles.png');
+    animation: hackerEffect 5s linear infinite;
+    pointer-events: none;
+    opacity: 0.1;
+}
+
+@keyframes hackerEffect {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.question-section {
+    margin: 20px 0;
+}
+
+.question {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.options li {
+    background-color: #333;
+    color: #00ff00;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.options li:hover {
+    background-color: #00ff00;
+    color: #000;
+}
+
+.btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    display: none;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .question {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+
+        .answer-button {
+            background-color: #2196F3;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+        }
+
+        .answer-button:hover {
+            background-color: #1e88e5;
+        }
+
+        #message {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #FF5722;
+        }
+
+        #success {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Os Guardiões do Código: A Ascensão do Terramoto Digital</h1>
+    <p>Bem-vindo ao jogo de história mais emocionante da sua vida. Salve o mundo digital ou veja-o desmoronar!</p>
+    <button class="button" onclick="startGame()">Iniciar Jogo</button>
+
+    <div id="game" style="display: none;">
+        <div id="story">
+            <p id="text"></p>
+        </div>
+        <div id="choices">
+            <!-- As opções de resposta serão inseridas aqui -->
+        </div>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const story = [
+            {
+                text: `
+                    No ano de 2077, a humanidade está totalmente dependente do mundo digital. Isaac, um jovem cientista, é chamado para uma missão urgente. 
+                    Um vírus chamado "Terramoto Digital" foi lançado na rede global, ameaçando destruir bancos de dados, sistemas financeiros e até mesmo a infraestrutura de segurança global. 
+                    No meio dessa crise, você descobre que o vírus foi desenvolvido por uma organização secreta chamada **Ecos da Tempestade**. O que você faz?
+                `,
+                choices: [
+                    { text: "Começar a investigar a fonte do vírus", correct: true },
+                    { text: "Alertar as autoridades e esperar ordens", correct: false }
+                ]
+            },
+            {
+                text: `
+                    Ao investigar, você encontra Lisandro Azevedo, um velho amigo e especialista em engenharia reversa de software. Lisandro revela que o Terramoto Digital não é apenas um vírus comum, 
+                    mas um programa de inteligência artificial que aprende e se adapta. Ele foi criado por Gacha Terramoto, uma cientista brilhante que foi expulsa da comunidade científica por práticas antiéticas. 
+                    Lisandro pede sua ajuda para invadir os sistemas da Gacha e descobrir como desativar o vírus. Mas isso envolve um risco: se forem pegos, vocês podem ser incriminados. O que você faz?
+                `,
+                choices: [
+                    { text: "Aceitar a proposta de Lisandro e invadir o sistema", correct: true },
+                    { text: "Rejeitar a ideia e buscar uma solução mais segura", correct: false }
+                ]
+            },
+            {
+                text: `
+                    Após invadir os sistemas de Gacha, você descobre algo surpreendente: o vírus foi projetado para reescrever os códigos de segurança de todas as redes globais, 
+                    concedendo à Gacha e sua equipe o controle absoluto da infraestrutura digital do mundo. No entanto, durante a invasão, Gacha descobre vocês e ativa um protocolo que começa a apagar os dados do servidor.
+                    Você precisa decidir rapidamente o que fazer. 
+                `,
+                choices: [
+                    { text: "Baixar os dados antes que sejam apagados", correct: true },
+                    { text: "Desconectar-se imediatamente para evitar ser rastreado", correct: false }
+                ]
+            },
+            {
+                text: `
+                    Com os dados baixados, você encontra uma pista vital: o código-fonte do Terramoto Digital contém uma falha escondida. Essa falha pode ser usada para neutralizar o vírus, mas exige um poder computacional imenso. 
+                    Lisandro sugere usar a Computação Quântica de um laboratório secreto, mas isso significa invadir outro sistema de alta segurança. Enquanto isso, Emanuel, um jovem hacker que se junta ao grupo, 
+                    sugere uma abordagem mais direta: criar um vírus reverso usando apenas os recursos disponíveis. Qual plano você escolhe?
+                `,
+                choices: [
+                    { text: "Usar o laboratório quântico para neutralizar o vírus", correct: true },
+                    { text: "Criar um vírus reverso com os recursos disponíveis", correct: false }
+                ]
+            },
+            {
+                text: `
+                    Ao usar o laboratório quântico, você enfrenta novos desafios. O sistema do laboratório possui uma série de defesas avançadas, incluindo um enigma de segurança que precisa ser resolvido antes que você possa acessar os recursos. 
+                    A pergunta do enigma é: "O que é mais poderoso que o tempo, invisível ao olho humano, mas controla todas as coisas no universo digital?"
+                `,
+                choices: [
+                    { text: "A informação", correct: true },
+                    { text: "A energia", correct: false }
+                ]
+            },
+            {
+                text: `
+                    Você responde corretamente ao enigma e obtém acesso à Computação Quântica. Com o poder do laboratório, você cria uma contra-medida que começa a desativar o Terramoto Digital. 
+                    No entanto, Gacha Terramoto envia uma mensagem desafiadora: "Você pode me deter agora, mas o mundo digital está condenado pela própria humanidade." Antes de desativar o sistema principal, você precisa decidir:
+                `,
+                choices: [
+                    { text: "Publicar os dados de Gacha para alertar o mundo", correct: true },
+                    { text: "Destruir todos os dados e evitar pânico", correct: false }
+                ]
+            },
+            {
+                text: `
+                    Ao publicar os dados de Gacha, você se torna um herói, mas também atrai a atenção de organizações poderosas. Você percebe que a batalha está longe de acabar. 
+                    Você e sua equipe decidem formar uma nova aliança chamada "Os Guardiões do Código", dedicada a proteger o mundo digital de novas ameaças. Parabéns, você salvou o mundo... por enquanto.
+                `,
+                choices: []
+            }
+        ];
+
+        let currentStep = 0;
+
+        function startGame() {
+            document.querySelector('button').style.display = 'none';
+            document.getElementById('game').style.display = 'block';
+            showStory();
+        }
+
+        function showStory() {
+            const currentStory = story[currentStep];
+            document.getElementById('text').innerHTML = currentStory.text;
+            const choicesContainer = document.getElementById('choices');
+            choicesContainer.innerHTML = '';
+            currentStory.choices.forEach((choice, index) => {
+                const button = document.createElement('button');
+                button.classList.add('answer-button');
+                button.textContent = choice.text;
+                button.onclick = () => handleChoice(choice, index);
+                choicesContainer.appendChild(button);
+            });
+        }
+
+        function handleChoice(choice, index) {
+            const message = document.getElementById('message');
+            if (choice.correct) {
+                message.textContent = "Resposta correta!";
+                message.style.color = "#4CAF50";
+                currentStep++;
+                if (currentStep < story.length) {
+                    setTimeout(showStory, 1000);
+                } else {
+                    endGame(true);
+                }
+            } else {
+                message.textContent = "Resposta errada! Você deve recomeçar.";
+                message.style.color = "#FF5722";
+                setTimeout(restartGame, 2000);
+            }
+        }
+
+        function restartGame() {
+            currentStep = 0;
+            document.getElementById('message').textContent = '';
+            showStory();
+        }
+
+        function endGame(success) {
+            const message = document.getElementById('message');
+            if (success) {
+                message.textContent = "Parabéns! Você venceu e salvou o mundo digital.";
+                message.style.color = "#4CAF50";
+            } else {
+                message.textContent = "Game Over. Tente novamente.";
+                message.style.color = "#FF5722";
+            }
+        }
+    </script>
+</body>
+  <!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Flutuante com Senha</title>
+    <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+    <div class="floating-link-container">
+        <a href="#" class="floating-link" id="flutuante">🔗 Acesse aqui</a>
+    </div>
+  
+
+    <script>
+        // Função que pede senha e redireciona se a senha estiver correta
+        document.getElementById("flutuante").onclick = function(event) {
+            event.preventDefault();  // Impede o link de redirecionar imediatamente
+            
+            const senhaCorreta = "A15";  // Defina sua senha aqui
+            const senha = prompt("Por favor, insira a senha para acessar o site:");
+
+            if (senha === senhaCorreta) {
+                window.location.href = "https://";  // Altere para o seu site de destino
+            } else {
+                alert("Senha incorreta. Tente novamente.");
+            }
+        };
+    </script>
+</body>
+</html>
