@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
   <link rel="stylesheet" href="styles/style.css"/>
-  <title>Hello, World!</title>
+  <title>BIT HACKERS🇦🇴</title>
 </head>
 <body>
   <h1>
@@ -19,7 +19,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bite Hackers: World Virus Simulator 🇦🇴</title>
     <style>
-        
+        /* Estilos para o terminal */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black; /* Fundo preto */
+    color: lime; /* Texto verde típico de terminais */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Estilo para o container do terminal */
+.terminal {
+    width: 100%;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: scroll; /* Permite rolar o terminal */
+    white-space: pre-wrap; /* Faz o texto quebrar quando necessário */
+    border: 2px solid lime; /* Borda verde */
+    background-color: black; /* Fundo preto */
+}
+
+/* Animação do texto */
+@keyframes typeEffect {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+/* Texto digitado no terminal */
+.terminal .text {
+    display: inline-block;
+    animation: typeEffect 4s steps(60) 1s forwards;
+    white-space: nowrap;
+    border-right: 2px solid lime; /* Cursor piscante */
+}
+
+/* Efeito de "alerta de vírus" */
+.alert {
+    color: red;
+    font-weight: bold;
+    animation: blink 1s infinite; /* Efeito piscando */
+}
+
+/* Efeito de piscamento para texto de alerta */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Estilo para o cursor do terminal */
+.terminal::after {
+    content: '_';
+    display: inline-block;
+    animation: blink 0.8s step-start infinite;
+}
+
+/* Fundo de alerta */
+.alert-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.7); /* Fundo vermelho com transparência */
+    display: none;
+    z-index: 10;
+}
+
+/* Ativar o fundo de alerta */
+.show-alert .alert-background {
+    display: block;
+}
     </style>
 </head>
 <body>
